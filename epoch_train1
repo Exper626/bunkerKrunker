@@ -1,0 +1,24 @@
+from ultralytics import YOLO
+import os
+
+# Paths
+DATA_YAML = r"E:\bunkerKrunker\teaPick_data1\data.yaml"
+SAVE_DIR = r"E:\bunkerKrunker\results_epoch_train1"
+
+# Models and epochs to test
+models = ["yolov8n.pt", "yolov8s.pt"]
+epochs_list = [5, 10, 15, 20, 25]
+
+# Run experiments
+for model_name in models:
+    for epochs in epochs_list:
+        print(f"\n Training {model_name} for {epochs} epochs...")
+        model = YOLO(model_name)
+        model.train(
+            data=DATA_YAML,
+            epochs=epochs,
+            batch=16,
+            imgsz=640,
+            project=SAVE_DIR,
+            name=f"{model_name.split('.')[0]}_{epochs}ep",
+        )

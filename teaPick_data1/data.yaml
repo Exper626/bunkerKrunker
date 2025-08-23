@@ -1,0 +1,12 @@
+names:
+- Stem
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: teapick
+  url: https://universe.roboflow.com/projectskripsi-1jdt4/teapick/dataset/1
+  version: 1
+  workspace: projectskripsi-1jdt4
+test: ../test/images
+train: ../train/images
+val: ../valid/images
