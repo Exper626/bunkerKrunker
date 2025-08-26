@@ -1,4 +1,3 @@
-from pdb import run
 from ultralytics import YOLO
 import os
 
@@ -6,36 +5,25 @@ import os
 DATA_YAML = r"E:\bunkerKrunker\teaPick_data1\data.yaml"
 SAVE_DIR = r"E:\bunkerKrunker\results_epoch_train1"
 
-# Models and epochs to test
-# removing "yolov8n.pt", because it has already been tested and run
-models = ["yolov8s.pt"]
-epochs_list = [5, 10, 15, 20, 25]
+def run():
+    # Models and epochs to test
+    models = ["yolov8s.pt"]
+    epochs_list = [25]
 
-# Run experiments#
-# Note: This is commented out to avoid re-training
-"""for model_name in models:
-    for epochs in epochs_list:
-        print(f"\n Training {model_name} for {epochs} epochs...")
-        model = YOLO(model_name)
-        model.train(
-            data=DATA_YAML,
-            epochs=epochs,
-            batch=16,
-            imgsz=640,
-            project=SAVE_DIR,
-            name=f"{model_name.split('.')[0]}_{epochs}ep",
-        )
-"""
-model = YOLO("yolov8s.pt")
+    # Run experiments
+    for model_name in models:
+        for epochs in epochs_list:
+            print(f"\n Training {model_name} for {epochs} epochs...")
+            model = YOLO(model_name)
+            model.train(
+                data=DATA_YAML,
+                epochs=epochs,
+                batch=16,
+                imgsz=640,
+                project=SAVE_DIR,
+                name=f"{model_name.split('.')[0]}_{epochs}ep",
+                device=0  # force GPU
+            )
 
-# Train on your dataset
-model.train(
-    data=DATA_YAML, 
-    epochs=25,        
-    batch=16,         
-    imgsz=640,
-    device=0 #to use gpu         
-)
-
-if __name__ == "__main__":   
+if __name__ == "__main__":   # VERY IMPORTANT on Windows
     run()
