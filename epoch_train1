@@ -1,3 +1,4 @@
+from pdb import run
 from ultralytics import YOLO
 import os
 
@@ -10,8 +11,9 @@ SAVE_DIR = r"E:\bunkerKrunker\results_epoch_train1"
 models = ["yolov8s.pt"]
 epochs_list = [5, 10, 15, 20, 25]
 
-# Run experiments
-for model_name in models:
+# Run experiments#
+# Note: This is commented out to avoid re-training
+"""for model_name in models:
     for epochs in epochs_list:
         print(f"\n Training {model_name} for {epochs} epochs...")
         model = YOLO(model_name)
@@ -23,3 +25,17 @@ for model_name in models:
             project=SAVE_DIR,
             name=f"{model_name.split('.')[0]}_{epochs}ep",
         )
+"""
+model = YOLO("yolov8s.pt")
+
+# Train on your dataset
+model.train(
+    data=DATA_YAML, 
+    epochs=25,        
+    batch=16,         
+    imgsz=640,
+    device=0 #to use gpu         
+)
+
+if __name__ == "__main__":   
+    run()
