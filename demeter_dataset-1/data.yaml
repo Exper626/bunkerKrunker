@@ -1,0 +1,12 @@
+names:
+- unopened_leaf
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: demeter_dataset-8k0kc
+  url: https://universe.roboflow.com/experiment626lab/demeter_dataset-8k0kc/dataset/1
+  version: 1
+  workspace: experiment626lab
+test: ../test/images
+train: ../train/images
+val: ../valid/images
