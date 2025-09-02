@@ -1,0 +1,12 @@
+names:
+- unopened_leaf
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: demetergetstea-ciif2
+  url: https://universe.roboflow.com/hanaaexperiment626/demetergetstea-ciif2/dataset/3
+  version: 3
+  workspace: hanaaexperiment626
+test: ../test/images
+train: ../train/images
+val: ../valid/images
